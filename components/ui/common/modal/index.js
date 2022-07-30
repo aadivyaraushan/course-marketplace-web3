@@ -1,0 +1,34 @@
+const Modal = ({ activated, children }) => {
+  return (
+    <section>
+      {/* Remove hidden to display it */}
+      <div
+        className={`${
+          !activated && "hidden"
+        } fixed z-10 inset-0 overflow-y-auto`}
+        aria-labelledby="modal-title"
+        role="dialog"
+        aria-modal="true"
+      >
+        <div className="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+          {/* Adds Gray BG */}
+          {activated && (
+            <div
+              className="fixed inset-0 bg-black bg-opacity-50 transition-opacity"
+              aria-hidden="true"
+            ></div>
+          )}
+          <span
+            className="hidden sm:inline-block sm:align-middle sm:h-screen"
+            aria-hidden="true"
+          >
+            &#8203;
+          </span>
+          {children}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default Modal;
